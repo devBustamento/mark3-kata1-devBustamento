@@ -18,7 +18,7 @@ namespace OnboardingExperience
             Console.WriteLine($"\nHello, {U.LastName}, what is your last name?");
 
             Console.Write("\nPress any key to exit...");
-            //Console.ReadKey(true); //commit
+            Console.ReadKey(true); //commit
         }
 
 
