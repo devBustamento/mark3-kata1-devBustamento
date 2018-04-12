@@ -25,7 +25,7 @@ namespace OnboardingExperience
             user.AccNo = IntQuestion("\nLets make a pin for your account, please input exactly four numbers!", 4);
             Console.WriteLine($"\nSuccess! your pin: {user.AccNo} has been added to your account, keep it safe!");
 
-            user.Age = IntQuestion("\nHow ancient are you?");
+            user.Age = IntQuestion("\nHow ancient are you?", 3);//dangit 
             Console.WriteLine($"\n Oh dear, {user.Age}?! Are you going to make it...?");
 
             user.AccOwn = YNbool("\nDo you already have a banking account with this us?");
@@ -35,10 +35,8 @@ namespace OnboardingExperience
             Console.ReadKey(true);
         }
 
-        private static void bigKaBang(User user)
-        {
-            Console.WriteLine($"{user.FirstName} {user.LastName}, at a hearty {user.Age}. \n bank account pre-existing: {user.AccOwn}, and your pin is set to {user.AccNo}");
-        }
+        private static void bigKaBang(User user) => Console.WriteLine($"{user.FirstName} {user.LastName}, at a hearty {user.Age}." +
+            $" \n bank account pre-existing: {user.AccOwn}, and your pin is set to {user.AccNo}");
 
         private static bool IsOwnerQuestion(string question)
         {
@@ -72,7 +70,7 @@ namespace OnboardingExperience
             {
                 var result = AskQuestion(question);//"the top"
 
-                if (!int.TryParse(result, out var num))
+                if (!int.TryParse(result, out var num))//@Cody why does !int.TryParse(result, out int num)) not work?
                 {
                     Console.WriteLine("\n **ERROR** \n Why be so difficult?");
                     continue; //Continue means time to take it back to "the top"
