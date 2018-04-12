@@ -25,7 +25,7 @@ namespace OnboardingExperience
             user.AccNo = IntQuestion("\nLets make a pin for your account, please input exactly four numbers!", 4);
             Console.WriteLine($"\nSuccess! your pin: {user.AccNo} has been added to your account, keep it safe!");
 
-            user.Age = IntQuestion("\nHow ancient are you?", 3);//dangit 
+            user.Age = IntQuestion("\nHow ancient are you?", 2);//dangit 
             Console.WriteLine($"\n Oh dear, {user.Age}?! Are you going to make it...?");
 
             user.AccOwn = YNbool("\nDo you already have a banking account with this us?");
