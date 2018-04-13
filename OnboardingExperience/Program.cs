@@ -14,7 +14,7 @@ namespace OnboardingExperience
             Console.ReadKey(true);
 
 
-            user.IsOwner = IsOwnerQuestion("have you previously set up a profile here?"); //decides to run the app or not
+            user.ProfileOwn = ProfileOwnerQuestion("have you previously set up a profile here?"); //decides to run the app or not
 
             user.FirstName = AskQuestion("\nWhat is your First name? ");
             Console.WriteLine($"\nHello, {user.FirstName},");
@@ -22,13 +22,13 @@ namespace OnboardingExperience
             user.LastName = AskQuestion("\nwell...what is your last name?");
             Console.WriteLine($"\nOkay {user.FirstName} {user.LastName}, lets keep it rollin'");
 
-            user.AccNo = IntQuestion("\nLets make a pin for your account, please input exactly four numbers!", 4);
-            Console.WriteLine($"\nSuccess! your pin: {user.AccNo} has been added to your account, keep it safe!");
+            user.AccNum = IntQuestion("\nLets make a pin for your account, please input exactly four numbers!", 4);
+            Console.WriteLine($"\nSuccess! your pin: {user.AccNum.ToString("0000")} has been added to your account, keep it safe!");
 
             user.Age = IntQuestion("\nHow ancient are you?", 2);//dangit 
             Console.WriteLine($"\n Oh dear, {user.Age}?! Are you going to make it...?");
 
-            user.AccOwn = YNbool("\nDo you already have a banking account with this us?");
+            user.AccOwn = YNCheck("\nDo you already have a banking account with this us?");
             bigKaBang(user);
 
             Console.Write("\nPress any key to exit...");
@@ -36,9 +36,9 @@ namespace OnboardingExperience
         }
 
         private static void bigKaBang(User user) => Console.WriteLine($"{user.FirstName} {user.LastName}, at a hearty {user.Age}." +
-            $" \n bank account pre-existing: {user.AccOwn}, and your pin is set to {user.AccNo}");
+            $" \n bank account pre-existing: {user.AccOwn}, and your pin is set to {user.AccNum}");
 
-        private static bool IsOwnerQuestion(string question)
+        private static bool ProfileOwnerQuestion(string question)
         {
             while (true)
             {
@@ -65,7 +65,6 @@ namespace OnboardingExperience
 
         public static int IntQuestion(string question, int length = 0) //has bug accepts 0, doesnt render 0
         {
-
             while (true)
             {
                 var result = AskQuestion(question);//"the top"
@@ -86,7 +85,7 @@ namespace OnboardingExperience
             }
         }
 
-        public static bool YNbool(string question)
+        public static bool YNCheck(string question)
         {
             do
             {
